@@ -1,0 +1,13 @@
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\LeisureToPDF.DAL.exe.config
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\LeisureToPDF.DAL.exe
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\LeisureToPDF.DAL.pdb
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\EntityFramework.dll
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\EntityFramework.xml
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\fr\EntityFramework.resources.dll
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\obj\Debug\LeisureToPDF.DAL.exe
+c:\users\juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\obj\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\obj\Debug\LeisureToPDF.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.DAL\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
