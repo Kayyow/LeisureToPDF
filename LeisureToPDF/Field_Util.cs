@@ -46,15 +46,10 @@ namespace LeisureToPDF
                 return leisureChecked;
             }
 
-            if (addressField == null){
+            /*if (categoryField == null){
                 leisureChecked = false;
                 return leisureChecked;
-            }
-
-            if (categoryField == null){
-                leisureChecked = false;
-                return leisureChecked;
-            }
+            }*/
 
             return leisureChecked;
         }
@@ -92,7 +87,6 @@ namespace LeisureToPDF
 
             return addressChecked;
         }
-
 
     }
 }
