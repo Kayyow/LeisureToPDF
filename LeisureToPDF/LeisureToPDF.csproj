@@ -76,7 +76,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FieldValidator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -114,9 +113,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\LeisureToPDF.DAL\LeisureToPDF.DAL.csproj">
+    <ProjectReference Include="..\LeisureToPDF.Database\LeisureToPDF.Database.csproj">
       <Project>{023bfa10-bf7b-44a0-91db-7444eff68505}</Project>
-      <Name>LeisureToPDF.DAL</Name>
+      <Name>LeisureToPDF.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LeisureToPDF.Services\LeisureToPDF.Services.csproj">
+      <Project>{3fe5c1cf-c5e5-4b44-a70c-ca371495437c}</Project>
+      <Name>LeisureToPDF.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -44,3 +44,5 @@ C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToP
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\obj\Debug\LeisureToPDF.g.resources
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\obj\Debug\LeisureToPDF.Properties.Resources.resources
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\obj\Debug\LeisureToPDF.csproj.GenerateResource.Cache
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.exe
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.pdb

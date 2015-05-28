@@ -1,0 +1,6 @@
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.csprojResolveAssemblyReference.cache
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe.config
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.pdb
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.exe
+C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.pdb

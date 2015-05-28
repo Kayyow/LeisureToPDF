@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LeisureToPDF.DAL;
 using System.Collections.ObjectModel;
+using LeisureToPDF.Database;
+using LeisureToPDF.Services;
 
 namespace LeisureToPDF
 {
@@ -23,6 +24,7 @@ namespace LeisureToPDF
 		private List<category> _Categories;
 		private ObservableCollection<leisure> _Leisures;
         private category _SelectedCategory;
+		private string _Notification;
 		#endregion
 
 		#region Properties
@@ -45,6 +47,11 @@ namespace LeisureToPDF
             get { return (leisure)GetValue(SelectedLeisureProperty); }
             set { SetValue(SelectedLeisureProperty, value); }
         }
+
+		public string Notification {
+			get { return _Notification; }
+			set { _Notification = value; }
+		}		
 		#endregion
 
 		// Using a DependencyProperty as the backing store for SelectedLeisure.  This enables animation, styling, binding, etc...
@@ -95,6 +102,24 @@ namespace LeisureToPDF
 			descriptionRicheTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 			categoryComboBox.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
 		}
+
+		private void MapLeisure(leisure leisure) {
+			leisure.title = titleTextBox.Text;
+			leisure.email = emailTextBox.Text;
+			leisure.phone = phoneTextBox.Text;
+			leisure.website = websiteTextBox.Text;
+			leisure.description = descriptionRicheTextBox.Text;
+
+			address address = new address();
+			address.number = Convert.ToInt32(numberTextBox.Text);
+			address.street = streetTextBox.Text;
+			address.zip_code = zipCodeTextBox.Text;
+			address.city = cityTextBox.Text;
+
+			leisure.address = address;
+
+			leisure.category = (category)categoryComboBox.SelectedItem;
+		}
 		#endregion
 
 		/// <summary>
@@ -103,50 +128,33 @@ namespace LeisureToPDF
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void SaveButton(object sender, RoutedEventArgs e) {
-			leisure currentLeisure = SelectedLeisure != null ? SelectedLeisure : new leisure();
+			leisure leisure = SelectedLeisure == null ? new leisure() : SelectedLeisure;
 
-            currentLeisure.title = titleTextBox.Text;
-            currentLeisure.email = emailTextBox.Text;
-            currentLeisure.phone = phoneTextBox.Text;
-            currentLeisure.website = websiteTextBox.Text;
-            currentLeisure.description = descriptionRicheTextBox.Text;
+			try {
+				FieldValidator fv = new FieldValidator(titleTextBox.Text, emailTextBox.Text, phoneTextBox.Text,
+					websiteTextBox.Text, descriptionRicheTextBox.Text, Convert.ToInt32(numberTextBox.Text),
+					streetTextBox.Text, zipCodeTextBox.Text, cityTextBox.Text);
+				fv.ValidFields();
+			} catch (Exception ex) {
+				Notification = ex.Message;
+				Console.WriteLine(ex.Message);
+				return;
+			}
 
-            address currentAddress = null;
+			this.MapLeisure(leisure);
 
-			if (SelectedLeisure == null) {
-                currentAddress = new address();
-                currentAddress.number =  Convert.ToInt32(numberTextBox.Text);
-                currentAddress.street = streetTextBox.Text;
-                currentAddress.zip_code = zipCodeTextBox.Text;
-                currentAddress.city = cityTextBox.Text;
+			if (SelectedLeisure == null) { // If add leisure
+				// Add to database
+				this._Db.address.Add(leisure.address);
+				this._Db.leisure.Add(leisure);
+				
+				// Add to ListBox
+				this._Leisures.Add(leisure);
+				SelectedLeisure = leisure;
+			}
 
-                currentLeisure.address = currentAddress;
-            } else {
-                currentLeisure.address.number = Convert.ToInt32(numberTextBox.Text);
-                currentLeisure.address.street = streetTextBox.Text;
-                currentLeisure.address.zip_code = zipCodeTextBox.Text;
-                currentLeisure.address.city = cityTextBox.Text;
-            }
-            
-            currentLeisure.category = (category)categoryComboBox.SelectedItem;
-
-            if (FieldValidator.CheckLeisure(this._Db, currentLeisure) == true) {
-				if (SelectedLeisure != null) {
-					this._Db.SaveChanges();
-                    MessageBox.Show("Loisir modifié ! ");
-                } else {
-					this._Db.address.Add(currentAddress);
-					this._Db.leisure.Add(currentLeisure);
-					this._Db.SaveChanges();
-					this._Leisures.Add(currentLeisure);
-					SelectedLeisure = currentLeisure;
-                    MessageBox.Show("Loisir ajouté !");
-                }
-
-				UpdateSources();
-            } else {
-                MessageBox.Show("Un erreure s\'est produite lors de l\'ajout d\'un nouveau loisir.");
-            }
+			this._Db.SaveChanges();
+			this.UpdateSources();
         }
 
 		/// <summary>
@@ -157,7 +165,7 @@ namespace LeisureToPDF
 		private void NewLeisureButtonClick(object sender, RoutedEventArgs e) {
 			SelectedLeisure = null;
 
-			ResetTextBoxes();
+			this.ResetTextBoxes();
         }
 
 		/// <summary>
