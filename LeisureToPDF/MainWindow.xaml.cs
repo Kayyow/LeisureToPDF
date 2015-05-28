@@ -25,6 +25,7 @@ namespace LeisureToPDF
 
         private List<category> _Categories;
         private category _SelectedCategorie;
+        private ObservableCollection<leisure> _leisures;
         private leisure _SelectedLeisure;
 
         public List<category> Categories
@@ -38,8 +39,6 @@ namespace LeisureToPDF
             get { return _SelectedCategorie; }
             set { _SelectedCategorie = value; }
         }
-
-        private ObservableCollection<leisure> _leisures;
 
         public ObservableCollection<leisure> Leisures
         {
@@ -78,15 +77,10 @@ namespace LeisureToPDF
             this.DataContext = this;
         }
 
-
-
         private void SaveButton(object sender, RoutedEventArgs e)
         {
 
            // titleTextBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-
-            //db = new lavalloisirEntities();
-
 
             Field_Util checkField = new Field_Util();
             leisure currentLeisure;
@@ -135,10 +129,11 @@ namespace LeisureToPDF
             {
                 currentLeisure.address = currentAddress;
             }*/
-            address currentAddress = new address();
+            address currentAddress =  null;
 
             if (SelectedLeisure == null)
             {
+                currentAddress = new address();
                 currentAddress.number =  Convert.ToInt32(numberTextBox.Text);
                 currentAddress.street = streetTextBox.Text;
                 currentAddress.zip_code = zipCodeTextBox.Text;
@@ -154,7 +149,6 @@ namespace LeisureToPDF
                 currentLeisure.address.city = cityTextBox.Text;
             }
             
-
             currentLeisure.category = (category)categoryComboBox.SelectedItem;
 
             if (checkField.CheckLeisure(db, currentLeisure) == true)
