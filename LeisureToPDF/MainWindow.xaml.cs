@@ -21,11 +21,10 @@ namespace LeisureToPDF
     public partial class MainWindow : Window
     {
         private lavalloisirEntities db = new lavalloisirEntities();
-        //private bool isNewLeisure = true;
 
         private List<category> _Categories;
         private category _SelectedCategorie;
-        private ObservableCollection<leisure> _leisures;
+        private ObservableCollection<leisure> _Leisures;
         private leisure _SelectedLeisure;
 
         public List<category> Categories
@@ -42,8 +41,8 @@ namespace LeisureToPDF
 
         public ObservableCollection<leisure> Leisures
         {
-            get { return _leisures; }   
-            set { _leisures = value; }
+            get { return _Leisures; }   
+            set { _Leisures = value; }
         }
 
         public leisure SelectedLeisure
@@ -54,7 +53,7 @@ namespace LeisureToPDF
 
         // Using a DependencyProperty as the backing store for SelectedLeisure.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedLeisureProperty =
-            DependencyProperty.Register("SelectedLeisure", typeof(leisure), typeof(Window), new PropertyMetadata(null));     
+        DependencyProperty.Register("SelectedLeisure", typeof(leisure), typeof(Window), new PropertyMetadata(null));     
 
 
         public MainWindow()
@@ -79,18 +78,10 @@ namespace LeisureToPDF
 
         private void SaveButton(object sender, RoutedEventArgs e)
         {
-
-           // titleTextBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-
-            Field_Util checkField = new Field_Util();
-            leisure currentLeisure;
+            leisure currentLeisure = SelectedLeisure != null ? SelectedLeisure : new leisure();
 
             if (SelectedLeisure != null)
             {
-                /*currentLeisure = (from l in db.leisure
-                                  where l.title == SelectedLeisure.title
-                                  select l).FirstOrDefault();*/
-
                 currentLeisure = SelectedLeisure;
             }
             else
@@ -104,31 +95,6 @@ namespace LeisureToPDF
             currentLeisure.website = websiteTextBox.Text;
             currentLeisure.description = descriptionRicheTextBox.Text;
 
-            /*address currentAddress;
-
-            if (SelectedLeisure != null)
-            {
-                currentAddress = (from l in db.leisure
-                                  where l.title == SelectedLeisure.title
-                                  select l.address).FirstOrDefault();
-            }
-            else
-            {
-                currentAddress = new address();
-            }
-            
-            if (numberTextBox.Text != "")
-            {
-                currentAddress.number = Convert.ToInt32(numberTextBox.Text);
-            }
-            currentAddress.street = streetTextBox.Text;
-            currentAddress.zip_code = zipCodeTextBox.Text;
-            currentAddress.city = cityTextBox.Text;
-
-            if (checkField.CheckAddress(db, currentAddress) == true)
-            {
-                currentLeisure.address = currentAddress;
-            }*/
             address currentAddress =  null;
 
             if (SelectedLeisure == null)
@@ -151,7 +117,7 @@ namespace LeisureToPDF
             
             currentLeisure.category = (category)categoryComboBox.SelectedItem;
 
-            if (checkField.CheckLeisure(db, currentLeisure) == true)
+            if (FieldValidator.CheckLeisure(db, currentLeisure) == true)
             {
                 if (SelectedLeisure != null)
                 {
@@ -185,29 +151,8 @@ namespace LeisureToPDF
             }
         }
 
-        //private void SelectionLeisureClick(object sender, SelectionChangedEventArgs e)
-        //{
-        //    isNewLeisure = false;
-        //    SelectedLeisure = this.SelectedLeisure;
-
-        //    titleTextBox.Text = SelectedLeisure.title;
-        //    emailTextBox.Text = SelectedLeisure.email;
-        //    phoneTextBox.Text = SelectedLeisure.phone;
-        //    websiteTextBox.Text = SelectedLeisure.website;
-        //    if (numberTextBox.Text != "")
-        //    {
-        //        numberTextBox.Text = Convert.ToString(SelectedLeisure.address.number);
-        //    }
-        //    streetTextBox.Text = SelectedLeisure.address.street;
-        //    zipCodeTextBox.Text = SelectedLeisure.address.zip_code;
-        //    cityTextBox.Text = SelectedLeisure.address.city;
-        //    descriptionRicheTextBox.Text = SelectedLeisure.description;
-        //    categoryComboBox.SelectedItem = SelectedLeisure.category;
-        //}
-
         private void NewLeisureButtonClick(object sender, RoutedEventArgs e)
         {
-            //isNewLeisure = true;
             SelectedLeisure = null;
 
             titleTextBox.Text = null;

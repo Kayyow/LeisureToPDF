@@ -7,9 +7,9 @@ using LeisureToPDF.DAL;
 
 namespace LeisureToPDF
 {
-    class Field_Util
+    public static class FieldValidator
     {
-        public bool CheckLeisure(lavalloisirEntities db, leisure leisure)
+        public static bool CheckLeisure(lavalloisirEntities db, leisure leisure)
         {
             bool leisureChecked = true;
 
@@ -46,15 +46,11 @@ namespace LeisureToPDF
                 return leisureChecked;
             }
 
-            /*if (categoryField == null){
-                leisureChecked = false;
-                return leisureChecked;
-            }*/
-
             return leisureChecked;
+
         }
 
-        public bool CheckAddress(lavalloisirEntities db, address address)
+        public static bool CheckAddress(lavalloisirEntities db, address address)
         {
             bool addressChecked = true;
 
