@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_lavalloisir.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -112,7 +115,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="icon_lavalloisir.ico" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LeisureToPDF.DAL\LeisureToPDF.DAL.csproj">
       <Project>{023bfa10-bf7b-44a0-91db-7444eff68505}</Project>
