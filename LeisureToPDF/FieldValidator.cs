@@ -7,10 +7,8 @@ using LeisureToPDF.DAL;
 
 namespace LeisureToPDF
 {
-    public static class FieldValidator
-    {
-        public static bool CheckLeisure(lavalloisirEntities db, leisure leisure)
-        {
+    public static class FieldValidator {
+		public static bool CheckLeisure(lavalloisirEntities db, leisure leisure) {
             bool leisureChecked = true;
 
             string titleField = leisure.title;
@@ -21,27 +19,27 @@ namespace LeisureToPDF
             address addressField = leisure.address;
             category categoryField = leisure.category;
 
-            if (titleField.Length > 255 || titleField.Length ==0){
+            if (titleField.Length > 255 || titleField.Length ==0) {
                 leisureChecked = false;
                 return leisureChecked;
             }
 
-            if (descriptionField == null){
+            if (descriptionField == null) {
                 leisureChecked = false;
                 return leisureChecked;
             }
 
-            if (emailField.Length > 255 || emailField.Length == 0){
+            if (emailField.Length > 255 || emailField.Length == 0) {
                 leisureChecked = false;
                 return leisureChecked;
             }
 
-            if (phoneField.Length > 10 || phoneField.Length == 0){
+            if (phoneField.Length > 10 || phoneField.Length == 0) {
                 leisureChecked = false;
                 return leisureChecked;
             }
 
-            if (websiteField.Length > 255){
+            if (websiteField.Length > 255) {
                 leisureChecked = false;
                 return leisureChecked;
             }
@@ -50,8 +48,7 @@ namespace LeisureToPDF
 
         }
 
-        public static bool CheckAddress(lavalloisirEntities db, address address)
-        {
+        public static bool CheckAddress(lavalloisirEntities db, address address) {
             bool addressChecked = true;
 
             int numberField = address.number;
@@ -70,8 +67,7 @@ namespace LeisureToPDF
                 
             }
 
-            if (cityField.Length > 5 || cityField.Length == 0)
-            {
+            if (cityField.Length > 5 || cityField.Length == 0) {
                 addressChecked = false;
                 return addressChecked;
             }

@@ -76,7 +76,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="NewLeisureButton"  Grid.Row="16" Grid.Column="2" Margin="10,2,5,0" Content="Ajouter un loisir" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
+        <Button x:Name="NewLeisureButton"  Grid.Row="16" Grid.Column="2" Margin="10,2,5,0" Content="Ajouter un nouveau loisir" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
 
     </Grid>
     
