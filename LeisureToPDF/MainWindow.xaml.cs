@@ -97,6 +97,11 @@ namespace LeisureToPDF
 		}
 		#endregion
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void SaveButton(object sender, RoutedEventArgs e) {
 			leisure currentLeisure = SelectedLeisure != null ? SelectedLeisure : new leisure();
 
@@ -144,28 +149,38 @@ namespace LeisureToPDF
             }
         }
 
-        private void NewLeisureButtonClick(object sender, RoutedEventArgs e) {
+		/// <summary>
+		///	
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void NewLeisureButtonClick(object sender, RoutedEventArgs e) {
 			SelectedLeisure = null;
 
 			ResetTextBoxes();
         }
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
         private void DeleteButtonClick(object sender, RoutedEventArgs e) {
 			if (SelectedLeisure != null) {
-				leisure leisureTotDelete = (from ld in this._Db.leisure
+				leisure leisureToDelete = (from ld in this._Db.leisure
 											where ld.title == SelectedLeisure.title
                                             select ld).First();
 
-                MessageBoxResult result = MessageBox.Show("Etes-vous sûr de vouloir supprimer le loisir : " + leisureTotDelete.title, "Suppression de loisir", MessageBoxButton.YesNo);
+                MessageBoxResult result =
+					MessageBox.Show("Etes-vous sûr de vouloir supprimer le loisir : " + leisureToDelete.title, "Suppression de loisir", MessageBoxButton.YesNo);
                 switch (result) {
                     case MessageBoxResult.Yes:
-						this._Db.address.Remove(leisureTotDelete.address);
-						this._Db.leisure.Remove(leisureTotDelete);
+						this._Db.address.Remove(leisureToDelete.address);
+						this._Db.leisure.Remove(leisureToDelete);
 						this._Db.SaveChanges();
 						Leisures.Remove(SelectedLeisure);
                         MessageBox.Show("Loisir supprimé !");
                         break;
-
                     case MessageBoxResult.No:
                         break;
                 }

@@ -19,7 +19,7 @@ namespace LeisureToPDF
             address addressField = leisure.address;
             category categoryField = leisure.category;
 
-            if (titleField.Length > 255 || titleField.Length ==0) {
+            if (titleField.Length > 255 || titleField.Length == 0) {
                 leisureChecked = false;
                 return leisureChecked;
             }
