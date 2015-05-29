@@ -4,3 +4,16 @@ C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToP
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.pdb
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.exe
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe.config
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.csprojResolveAssemblyReference.cache
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.exe
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\itextsharp.dll
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\itextsharp.xml
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.DAL.exe
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\EntityFramework.dll
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\EntityFramework.xml
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\fr\EntityFramework.resources.dll

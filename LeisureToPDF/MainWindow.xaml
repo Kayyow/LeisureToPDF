@@ -124,7 +124,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Grid.Row="1" Grid.Column="0" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="GeneratePDFClick"></Button>
                 <Button Grid.Row="1" Grid.Column="1" Margin="1,2,0,0" Content="Consulter le loisir" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
 
             </Grid>
