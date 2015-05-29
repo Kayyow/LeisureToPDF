@@ -64,7 +64,6 @@
                 <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">Site web :</Label>
                 <TextBox Grid.Row="6" Grid.Column="1" Margin="0,5,0,0" x:Name="websiteTextBox" Text="{Binding SelectedLeisure.website, UpdateSourceTrigger=Explicit}"></TextBox>
 
-
                 <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">Adresse</Label>
                 <Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Numéro de rue :</Label>
                 <TextBox Grid.Row="8" Grid.Column="1" Margin="0,4,0,0" x:Name="numberTextBox" Text="{Binding SelectedLeisure.address.number, UpdateSourceTrigger=Explicit}"></TextBox>
@@ -137,7 +136,7 @@
                 <Label FontSize="14" Foreground="#FF349DAE" Grid.ColumnSpan="2">Notification :</Label>
             </GroupBox.Header>
             <StackPanel Margin="5,-5,10,0">
-                <TextBlock Text="{Binding Notification}"/>
+                <TextBlock x:Name="notificationTextBlock" Text="{Binding Notification}"/>
             </StackPanel>
         </GroupBox>
 

@@ -24,7 +24,6 @@ namespace LeisureToPDF
 		private List<category> _Categories;
 		private ObservableCollection<leisure> _Leisures;
         private category _SelectedCategory;
-		private string _Notification;
 		#endregion
 
 		#region Properties
@@ -49,14 +48,18 @@ namespace LeisureToPDF
         }
 
 		public string Notification {
-			get { return _Notification; }
-			set { _Notification = value; }
-		}		
+			get { return (string)GetValue(NotificationProperty); }
+			set { SetValue(NotificationProperty, value); }
+		}
 		#endregion
 
 		// Using a DependencyProperty as the backing store for SelectedLeisure.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedLeisureProperty =
 			DependencyProperty.Register("SelectedLeisure", typeof(leisure), typeof(Window), new PropertyMetadata(null));
+
+		// Using a DependencyProperty as the backing store for Notification.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty NotificationProperty =
+			DependencyProperty.Register("Notification", typeof(string), typeof(Window), new PropertyMetadata(null));
 
 		#region Constructor
 		public MainWindow() {
@@ -88,6 +91,7 @@ namespace LeisureToPDF
 			zipCodeTextBox.Text = null;
 			cityTextBox.Text = null;
 			descriptionRicheTextBox.Text = null;
+			notificationTextBlock.Text = null;
 		}
 
 		private void UpdateSources() {
@@ -129,15 +133,15 @@ namespace LeisureToPDF
 		/// <param name="e"></param>
 		private void SaveButton(object sender, RoutedEventArgs e) {
 			leisure leisure = SelectedLeisure == null ? new leisure() : SelectedLeisure;
+			bool isSelectedCategory = categoryComboBox.SelectedItem != null;
 
 			try {
 				FieldValidator fv = new FieldValidator(titleTextBox.Text, emailTextBox.Text, phoneTextBox.Text,
-					websiteTextBox.Text, descriptionRicheTextBox.Text, Convert.ToInt32(numberTextBox.Text),
-					streetTextBox.Text, zipCodeTextBox.Text, cityTextBox.Text);
+					websiteTextBox.Text, descriptionRicheTextBox.Text, numberTextBox.Text,
+					streetTextBox.Text, zipCodeTextBox.Text, cityTextBox.Text, isSelectedCategory);
 				fv.ValidFields();
 			} catch (Exception ex) {
 				Notification = ex.Message;
-				Console.WriteLine(ex.Message);
 				return;
 			}
 
@@ -180,7 +184,8 @@ namespace LeisureToPDF
                                             select ld).First();
 
                 MessageBoxResult result =
-					MessageBox.Show("Etes-vous sûr de vouloir supprimer le loisir : " + leisureToDelete.title, "Suppression de loisir", MessageBoxButton.YesNo);
+					MessageBox.Show("Etes-vous sûr de vouloir supprimer le loisir : " + leisureToDelete.title,
+					"Suppression de loisir", MessageBoxButton.YesNo);
                 switch (result) {
                     case MessageBoxResult.Yes:
 						this._Db.address.Remove(leisureToDelete.address);

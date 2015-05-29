@@ -13,12 +13,14 @@ namespace LeisureToPDF.Services
 		private string _Phone;
 		private string _Website;
 		private string _Description;
-		private int _AddrNumber;
+		private string _AddrNumber;
 		private string _AddrStreet;
 		private string _AddrZipCode;
 		private string _AddrCity;
+		private bool _IsSelectedCategory;
 
-		public FieldValidator (string title, string email, string phone, string website, string description, int addrNumber, string addrStreet, string addrZipCode, string addrCity) {
+		public FieldValidator (string title, string email, string phone, string website, string description,
+			string addrNumber, string addrStreet, string addrZipCode, string addrCity, bool isSelectedCategory) {
 			this._Title = title;
 			this._Email = email;
 			this._Phone = phone;
@@ -28,6 +30,7 @@ namespace LeisureToPDF.Services
 			this._AddrStreet = addrStreet;
 			this._AddrZipCode = addrZipCode;
 			this._AddrCity = addrCity;
+			this._IsSelectedCategory = isSelectedCategory;
 		}
 
 		public void ValidFields() {
@@ -41,6 +44,7 @@ namespace LeisureToPDF.Services
 				this.ValidAddrStreet();
 				this.ValidAddrZipCode();
 				this.ValidAddrCity();
+				this.ValidCategory();
 			} catch (Exception e) {
 				throw new Exception(e.Message);
 			}
@@ -60,7 +64,10 @@ namespace LeisureToPDF.Services
 			if (String.IsNullOrEmpty(this._Email.Trim())) {
 				throw new Exception("Veuillez donner une adresse email au loisir.");
 			} else {
-				
+				Regex rgx = new Regex(@"([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)");
+				if (!rgx.IsMatch(this._Email)) {
+					throw new Exception("L'adresse email n'est pas valide. (Forme : adresse@domaine.ext)");
+				}
 			}
 		}
 
@@ -68,37 +75,41 @@ namespace LeisureToPDF.Services
 			if (String.IsNullOrEmpty(this._Phone.Trim())) {
 				throw new Exception("Veuillez donner un numéro de téléphone au loisir.");
 			} else {
-				if (this._Phone.Length > 10) {
-					throw new Exception("Le numéro de téléphone ne peut pas excéder 10 caractères. (Forme : 0601020304)");
+				Regex rgx = new Regex(@"\d{10}");
+				if (!rgx.IsMatch(this._Phone)) {
+					throw new Exception("Le numéro de téléphone doit comprendre 10 caractères. (Forme : 0601020304)");
 				}
 			}
 		}
 
 		private void ValidWebsite () {
 			if (!String.IsNullOrEmpty(this._Website.Trim())) {
-				
+				if (!Uri.IsWellFormedUriString(this._Website, UriKind.Absolute)) {
+					throw new Exception("L'adresse du site internet n'est pas valide. (Forme : http(s)://website.com)");
+				}
 			}
 		}
 
 		private void ValidDescription () {
 			if (String.IsNullOrEmpty(this._Description.Trim())) {
 				throw new Exception("Veuillez donner une description au loisir.");
-			} else {
-
 			}
 		}
 
 		private void ValidAddrNumber () {
-			if (this._AddrNumber > 999) {
-				throw new Exception("Veuillez ne pas entrer un numéro de rue trop élevé.");
-			}
+			if (String.IsNullOrEmpty(this._AddrNumber.Trim())) {
+				throw new Exception("Veuillez préciser le numéro de l'adresse du loisir.");
+			} else {
+				Regex rgx = new Regex(@"^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$");
+				if (!rgx.IsMatch(this._AddrNumber)) {
+					throw new Exception("Veuillez entrer un numéro d'adresse valide. (Compris entre : 1 et 999)");
+				}
+			} 
 		}
 
 		private void ValidAddrStreet () {
 			if (String.IsNullOrEmpty(this._AddrStreet.Trim())) {
 				throw new Exception("Veuillez préciser la voie de l'adresse du loisir.");
-			} else {
-
 			}
 		}
 
@@ -106,7 +117,8 @@ namespace LeisureToPDF.Services
 			if (String.IsNullOrEmpty(this._AddrZipCode.Trim())) {
 				throw new Exception("Veuillez préciser le code postal de l'adresse du loisir.");
 			} else {
-				if (this._AddrZipCode.Length != 5) {
+				Regex rgx = new Regex(@"\d{5}");
+				if (!rgx.IsMatch(this._AddrZipCode)) {
 					throw new Exception("Le code postal doit contenir 5 chiffres");
 				}
 			}
@@ -115,8 +127,12 @@ namespace LeisureToPDF.Services
 		private void ValidAddrCity () {
 			if (String.IsNullOrEmpty(this._AddrCity.Trim())) {
 				throw new Exception("Veuillez préciser la ville de l'adresse du loisir.");
-			} else {
+			}
+		}
 
+		private void ValidCategory() {
+			if (!this._IsSelectedCategory) {
+				throw new Exception("Veuillez sélectionner une catégorie.");
 			}
 		}
     }
