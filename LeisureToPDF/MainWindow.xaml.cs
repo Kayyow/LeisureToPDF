@@ -132,7 +132,7 @@ namespace LeisureToPDF
 
 			try {
 				FieldValidator fv = new FieldValidator(titleTextBox.Text, emailTextBox.Text, phoneTextBox.Text,
-					websiteTextBox.Text, descriptionRicheTextBox.Text, Convert.ToInt32(numberTextBox.Text),
+					websiteTextBox.Text, descriptionRicheTextBox.Text, numberTextBox.Text,
 					streetTextBox.Text, zipCodeTextBox.Text, cityTextBox.Text);
 				fv.ValidFields();
 			} catch (Exception ex) {
