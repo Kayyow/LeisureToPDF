@@ -196,5 +196,14 @@ namespace LeisureToPDF
                 MessageBox.Show("Aucun loisir selectionné !");
             }
 		}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GeneratePDFClick(object sender, RoutedEventArgs e) {
+            PDFGenerator.GeneratePDF(this.SelectedLeisure);
+        }
 	}
 }

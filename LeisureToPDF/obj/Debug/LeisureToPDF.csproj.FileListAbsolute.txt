@@ -46,3 +46,7 @@ C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToP
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\obj\Debug\LeisureToPDF.csproj.GenerateResource.Cache
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.exe
 C:\Users\Kayyow-PC\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.exe
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.dll
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.xml
