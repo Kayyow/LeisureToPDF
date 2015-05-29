@@ -13,7 +13,13 @@ namespace LeisureToPDF.Services {
     public static class PDFGenerator {
 
         public static void GeneratePDF(leisure leisure) {
-
+			// Uses to get directory
+			string dirLTPDF = @"LeisureToPDF\";
+			string currentDir = Directory.GetCurrentDirectory();
+			int idxLTPDF = currentDir.IndexOf(dirLTPDF) + dirLTPDF.Length;
+			string dir = currentDir.Substring(0, idxLTPDF);
+			string dirAssets = dir + @"LeisureToPDF\Assets\";
+			//
 
             Font label = FontFactory.GetFont("georgia", 10f);
             Font titleFont = FontFactory.GetFont("Open sans", 16, new BaseColor(101, 185, 189));
@@ -21,8 +27,10 @@ namespace LeisureToPDF.Services {
             Rectangle rec = new Rectangle(PageSize.A4);
             rec.BackgroundColor = new BaseColor(240, 240, 240);
 
+			
+
             Document doc = new Document(rec, 25, 25, 25, 25);
-            FileStream fs = new FileStream(leisure.title + "PDF.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fs = new FileStream(dirAssets + leisure.title + "PDF.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
 
             PdfWriter writer = PdfWriter.GetInstance(doc, fs);
 
@@ -30,8 +38,7 @@ namespace LeisureToPDF.Services {
 
             Paragraph title = new Paragraph(leisure.title, titleFont);
             title.Alignment = Element.ALIGN_LEFT;
-
-           Image logo = Image.GetInstance("C:\\Users\\Juliien\\Documents\\Visual Studio 2013\\Projects\\Test ItextSharp\\Test ItextSharp\\img\\logo_Lavalloisir.png");
+			Image logo = Image.GetInstance(dirAssets + @"img\logo_lavalloisir.jpg");
             logo.ScalePercent(25f);
             logo.Alignment = Image.TEXTWRAP | Image.ALIGN_RIGHT;
             logo.IndentationLeft = 9f;
@@ -46,9 +53,9 @@ namespace LeisureToPDF.Services {
             Chunk linebreakHead = new Chunk(separatorHead);
             doc.Add(linebreakHead);
             
-            doc.Add(new Paragraph("Description:"));
+            doc.Add(new Paragraph("Description :"));
 
-            Image PictureLeisure = Image.GetInstance("C:\\Users\\Juliien\\Documents\\Visual Studio 2013\\Projects\\Test ItextSharp\\Test ItextSharp\\img\\image.jpg");
+			Image PictureLeisure = Image.GetInstance(dirAssets + @"img\image_lavalloisir.jpg");
             Paragraph paragraph = new Paragraph(@leisure.description);
             paragraph.Alignment = Element.ALIGN_JUSTIFIED;
             PictureLeisure.ScalePercent(25f);
@@ -61,9 +68,9 @@ namespace LeisureToPDF.Services {
             doc.Add(linebreakHead);
 
             doc.Add(new Paragraph("Coordonnées : "));
-            doc.Add(new Paragraph("Tel : " + leisure.phone, label));
-            doc.Add(new Paragraph("Email : "+ leisure.email, label));
-            doc.Add(new Paragraph("Site web : " + leisure.website, label));
+            doc.Add(new Paragraph("Téléphone : " + leisure.phone, label));
+            doc.Add(new Paragraph("Adresse email : "+ leisure.email, label));
+            doc.Add(new Paragraph("Site internet : " + leisure.website, label));
             doc.Add(new Paragraph("Adresse : ", label));
             doc.Add(new Paragraph(leisure.address.number));
             doc.Add(new Paragraph(leisure.address.street));

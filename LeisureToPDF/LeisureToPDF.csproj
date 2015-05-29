@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon_lavalloisir.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\icon_lavalloisir.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -115,7 +115,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon_lavalloisir.ico" />
+    <Resource Include="Assets\icon_lavalloisir.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LeisureToPDF.Database\LeisureToPDF.Database.csproj">
@@ -126,6 +126,9 @@
       <Project>{3fe5c1cf-c5e5-4b44-a70c-ca371495437c}</Project>
       <Name>LeisureToPDF.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

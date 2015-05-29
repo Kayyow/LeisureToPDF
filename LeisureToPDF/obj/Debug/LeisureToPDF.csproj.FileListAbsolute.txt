@@ -50,3 +50,5 @@ C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF
 C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\LeisureToPDF.Services.pdb
 C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.dll
 C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.xml
+C:\Users\Kayyow-PC\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.dll
+C:\Users\Kayyow-PC\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF\bin\Debug\itextsharp.xml

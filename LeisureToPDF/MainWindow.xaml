@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LeisureToPDF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="LeisureToPDF" Height="600" Width="800" MinHeight="600" MinWidth="800" Icon="icon_lavalloisir.ico">
+        Title="LeisureToPDF" Height="600" Width="800" MinHeight="600" MinWidth="800" Icon="Assets/icon_lavalloisir.ico">
 
     <Grid Margin="5">
 
@@ -45,7 +45,7 @@
 
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Margin="0,1,0,0" Content="Ajouter un nouveau loisir" Background="#FF349DAE" Foreground="#fff" Click="DeleteButtonClick"></Button>
+                <Button Grid.Row="0" Grid.Column="0" Margin="0,1,0,0" Content="Ajouter un nouveau loisir" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
 
                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">Id :</Label>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="0,4,0,0" x:Name="idTextBox" Text="{Binding SelectedLeisure.id, UpdateSourceTrigger=Explicit}" IsEnabled="False"/>
@@ -57,7 +57,7 @@
 
                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">Titre :</Label>
                 <TextBox Grid.Row="3" Grid.Column="1" Margin="0,4,0,0" x:Name="titleTextBox" Text="{Binding SelectedLeisure.title, UpdateSourceTrigger=Explicit}"/>
-                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">Email :</Label>
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">Adresse email :</Label>
                 <TextBox Grid.Row="4" Grid.Column="1" Margin="0,4,0,0" x:Name="emailTextBox" Text="{Binding SelectedLeisure.email, UpdateSourceTrigger=Explicit}"></TextBox>
                 <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">Téléphone :</Label>
                 <TextBox Grid.Row="5" Grid.Column="1" Margin="0,4,0,0" x:Name="phoneTextBox" Text="{Binding SelectedLeisure.phone, UpdateSourceTrigger=Explicit}" MaxLength="10"></TextBox>
@@ -65,14 +65,14 @@
                 <TextBox Grid.Row="6" Grid.Column="1" Margin="0,5,0,0" x:Name="websiteTextBox" Text="{Binding SelectedLeisure.website, UpdateSourceTrigger=Explicit}"></TextBox>
 
                 <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">Adresse</Label>
-                <Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Numéro de rue :</Label>
+                <Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">N° :</Label>
                 <TextBox Grid.Row="8" Grid.Column="1" Margin="0,4,0,0" x:Name="numberTextBox" Text="{Binding SelectedLeisure.address.number, UpdateSourceTrigger=Explicit}"></TextBox>
-                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Nom de voie :</Label>
+                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Rue :</Label>
                 <TextBox Grid.Row="9" Grid.Column="1" Margin="0,4,0,0" x:Name="streetTextBox" Text="{Binding SelectedLeisure.address.street, UpdateSourceTrigger=Explicit}"></TextBox>
-                <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Code postal :</Label>
-                <TextBox Grid.Row="10" Grid.Column="1" Margin="0,4,0,0" x:Name="zipCodeTextBox" Text="{Binding SelectedLeisure.address.zip_code, UpdateSourceTrigger=Explicit}"></TextBox>
-                <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Ville :</Label>
-                <TextBox Grid.Row="11" Grid.Column="1" Margin="0,4,0,0" x:Name="cityTextBox" Text="{Binding SelectedLeisure.address.city, UpdateSourceTrigger=Explicit}"></TextBox>
+                <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Ville :</Label>
+                <TextBox Grid.Row="10" Grid.Column="1" Margin="0,4,0,0" x:Name="cityTextBox" Text="{Binding SelectedLeisure.address.city, UpdateSourceTrigger=Explicit}"></TextBox>
+                <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">Code postal :</Label>
+                <TextBox Grid.Row="11" Grid.Column="1" Margin="0,4,0,0" x:Name="zipCodeTextBox" Text="{Binding SelectedLeisure.address.zip_code, UpdateSourceTrigger=Explicit}"></TextBox>
 
                 <Label Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">Description :</Label>
                 <TextBox Grid.Row="12" Grid.Column="1" Height="auto" Margin="0,4,0,4" TextWrapping="Wrap" AcceptsReturn="True" x:Name="descriptionRicheTextBox" VerticalScrollBarVisibility="Auto" Text="{Binding SelectedLeisure.description, UpdateSourceTrigger=Explicit}"/>
@@ -124,8 +124,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Grid.Row="1" Grid.Column="0" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="GeneratePDFClick"></Button>
-                <Button Grid.Row="1" Grid.Column="1" Margin="1,2,0,0" Content="Consulter le loisir" Background="#FF349DAE" Foreground="#fff" Click="NewLeisureButtonClick"></Button>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="GeneratePDFButtonClick"></Button>
+                <Button Grid.Row="1" Grid.Column="1" Margin="1,2,0,0" Content="Consulter le loisir" Background="#FF349DAE" Foreground="#fff"></Button>
 
             </Grid>
         </GroupBox>
