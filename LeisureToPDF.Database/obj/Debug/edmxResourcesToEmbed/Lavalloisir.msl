@@ -34,6 +34,7 @@
     <EntitySetMapping Name="leisure">
       <EntityTypeMapping TypeName="lavalloisirModel.leisure">
         <MappingFragment StoreEntitySet="leisure">
+          <ScalarProperty Name="picture" ColumnName="picture" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="description" ColumnName="description" />

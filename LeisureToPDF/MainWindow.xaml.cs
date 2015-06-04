@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using LeisureToPDF.Database;
 using LeisureToPDF.Services;
+using Microsoft.Win32;
+using System.IO;
 
 namespace LeisureToPDF
 {
@@ -32,7 +34,7 @@ namespace LeisureToPDF
             set { _Categories = value; }
         }
 
-		public ObservableCollection<leisure> Leisures {
+        public ObservableCollection<leisure> Leisures {
 			get { return _Leisures; }
 			set { _Leisures = value; }
 		}
@@ -40,7 +42,7 @@ namespace LeisureToPDF
         public category SelectedCategory {
             get { return _SelectedCategory; }
             set { _SelectedCategory = value; }
-        }		
+        }
 
         public leisure SelectedLeisure {
             get { return (leisure)GetValue(SelectedLeisureProperty); }
@@ -55,7 +57,7 @@ namespace LeisureToPDF
 
 		// Using a DependencyProperty as the backing store for SelectedLeisure.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedLeisureProperty =
-			DependencyProperty.Register("SelectedLeisure", typeof(leisure), typeof(Window), new PropertyMetadata(null));
+            DependencyProperty.Register("SelectedLeisure", typeof(leisure), typeof(Window), new PropertyMetadata(null));
 
 		// Using a DependencyProperty as the backing store for Notification.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty NotificationProperty =
@@ -65,14 +67,14 @@ namespace LeisureToPDF
 		public MainWindow() {
 			this._Db = new lavalloisirEntities();
             this._Categories = new List<category>();
-			this._Leisures = new ObservableCollection<leisure>();
+            this._Leisures = new ObservableCollection<leisure>();
 
 			foreach (category c in this._Db.category) {
                 this._Categories.Add(c);
             }
 
-			foreach (leisure l in this._Db.leisure) {
-				this._Leisures.Add(l);
+            foreach (leisure l in this._Db.leisure) {
+				this._Leisures.Add((leisure)l);
             }
 
             InitializeComponent();
@@ -114,13 +116,21 @@ namespace LeisureToPDF
 			leisure.website = websiteTextBox.Text;
 			leisure.description = descriptionRicheTextBox.Text;
 
-			address address = new address();
-			address.number = Convert.ToInt32(numberTextBox.Text);
-			address.street = streetTextBox.Text;
-			address.zip_code = zipCodeTextBox.Text;
-			address.city = cityTextBox.Text;
+            if (SelectedLeisure == null) {
+                address address = new address();
+                address.number = Convert.ToInt32(numberTextBox.Text);
+                address.street = streetTextBox.Text;
+                address.zip_code = zipCodeTextBox.Text;
+                address.city = cityTextBox.Text;
 
-			leisure.address = address;
+                leisure.address = address;
+            } else {
+                leisure.address.number = Convert.ToInt32(numberTextBox.Text);
+                leisure.address.street = streetTextBox.Text;
+                leisure.address.zip_code = zipCodeTextBox.Text;
+                leisure.address.city = cityTextBox.Text;
+            }
+			
 
 			leisure.category = (category)categoryComboBox.SelectedItem;
 		}
@@ -132,7 +142,7 @@ namespace LeisureToPDF
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void SaveButton(object sender, RoutedEventArgs e) {
-			leisure leisure = SelectedLeisure == null ? new leisure() : SelectedLeisure;
+            leisure leisure = SelectedLeisure == null ? new leisure() : SelectedLeisure;
 			bool isSelectedCategory = categoryComboBox.SelectedItem != null;
 
 			try {
@@ -159,6 +169,7 @@ namespace LeisureToPDF
 
 			this._Db.SaveChanges();
 			this.UpdateSources();
+            Notification = "L'enregistrement a été effectué avec succès."; 
         }
 
 		/// <summary>
@@ -179,7 +190,7 @@ namespace LeisureToPDF
 		/// <param name="e"></param>
         private void DeleteButtonClick(object sender, RoutedEventArgs e) {
 			if (SelectedLeisure != null) {
-				leisure leisureToDelete = (from ld in this._Db.leisure
+                leisure leisureToDelete = (leisure)(from ld in this._Db.leisure
 											where ld.title == SelectedLeisure.title
                                             select ld).First();
 
@@ -191,8 +202,8 @@ namespace LeisureToPDF
 						this._Db.address.Remove(leisureToDelete.address);
 						this._Db.leisure.Remove(leisureToDelete);
 						this._Db.SaveChanges();
-						Leisures.Remove(SelectedLeisure);
-                        MessageBox.Show("Loisir supprimé !");
+                        Notification = "Le loisir '" + SelectedLeisure.title + "' a été supprimé avec succès.";
+                        Leisures.Remove(SelectedLeisure);
                         break;
                     case MessageBoxResult.No:
                         break;
@@ -208,7 +219,38 @@ namespace LeisureToPDF
         /// <param name="sender"></param>
         /// <param name="e"></param>
 		private void GeneratePDFButtonClick(object sender, RoutedEventArgs e) {
-            PDFGenerator.GeneratePDF(this.SelectedLeisure);
+
+            try {
+                PDFGenerator.GeneratePDF(this.SelectedLeisure);
+                Notification = "Génération de la plaquette '" + SelectedLeisure.title + "' effectué avec succès."  ; 
+            } catch (Exception ex) {
+                Notification = ex.Message;
+                return;
+            }
+            
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChosePictureButtonClick(object sender, RoutedEventArgs e) {
+            try {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.ShowDialog();
+
+                leisure l = (leisure)(from lsr in this._Db.leisure
+                             where lsr.id == 1
+                             select lsr).FirstOrDefault();
+                
+                File.WriteAllBytes(@"C:\Users\Juliien\Documents\Images\"+ l.title + ".png", l.picture);
+
+            } catch (Exception) {
+                throw;
+            }
+
+        }
+
 	}
 }

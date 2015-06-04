@@ -46,6 +46,7 @@
     <NavigationProperty Name="address" Relationship="Self.leisure_ibfk_1" FromRole="leisure" ToRole="address" />
     <NavigationProperty Name="category" Relationship="Self.leisure_ibfk_2" FromRole="leisure" ToRole="category" />
     <NavigationProperty Name="evaluation" Relationship="Self.evaluation_ibfk_1" FromRole="leisure" ToRole="evaluation" />
+    <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="leisure_ibfk_1">
     <End Role="address" Type="Self.address" Multiplicity="1" />

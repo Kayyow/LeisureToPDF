@@ -27,6 +27,7 @@ namespace LeisureToPDF.Database
         public string website { get; set; }
         public int id_address { get; set; }
         public int id_category { get; set; }
+        public byte[] picture { get; set; }
     
         public virtual address address { get; set; }
         public virtual category category { get; set; }
