@@ -93,7 +93,7 @@ namespace LeisureToPDF
 			zipCodeTextBox.Text = null;
 			cityTextBox.Text = null;
 			descriptionRicheTextBox.Text = null;
-			notificationTextBlock.Text = null;
+            Notification = "";  
 		}
 
 		private void UpdateSources() {
@@ -150,7 +150,8 @@ namespace LeisureToPDF
 					streetTextBox.Text, zipCodeTextBox.Text, cityTextBox.Text, isSelectedCategory);
 				fv.ValidFields();
 			} catch (Exception ex) {
-				Notification = ex.Message;
+                Notification = ex.Message;
+                notificationTextBlock.Foreground = Brushes.Red;
 				return;
 			}
 
@@ -168,7 +169,8 @@ namespace LeisureToPDF
 
 			this._Db.SaveChanges();
 			this.UpdateSources();
-            Notification = "L'enregistrement a été effectué avec succès."; 
+            Notification = "L'enregistrement a été effectué avec succès.";
+            notificationTextBlock.Foreground = Brushes.Green;
         }
 
 		/// <summary>
@@ -202,6 +204,7 @@ namespace LeisureToPDF
 						this._Db.leisure.Remove(leisureToDelete);
 						this._Db.SaveChanges();
                         Notification = "Le loisir '" + SelectedLeisure.title + "' a été supprimé avec succès.";
+                        notificationTextBlock.Foreground = Brushes.Green;
                         Leisures.Remove(SelectedLeisure);
                         break;
                     case MessageBoxResult.No:
@@ -228,9 +231,11 @@ namespace LeisureToPDF
                 pathDirectory = sfd.FileName;
 
                 PDFGenerator.GeneratePDF(this.SelectedLeisure, pathDirectory);
-                Notification = "Génération de la plaquette '" + SelectedLeisure.title + "' effectué avec succès."  ; 
+                Notification = "Génération de la plaquette '" + SelectedLeisure.title + "' effectué avec succès."  ;
+                notificationTextBlock.Foreground = Brushes.Green;
             } catch (Exception ex) {
                 Notification = ex.Message;
+                notificationTextBlock.Foreground = Brushes.Red;
                 return;
             }
             
@@ -250,7 +255,7 @@ namespace LeisureToPDF
                              where lsr.id == 1
                              select lsr).FirstOrDefault();
                 
-                File.WriteAllBytes(@"C:\Users\Juliien\Documents\Images\"+ l.title + ".png", l.picture);
+                File.WriteAllBytes(@"C:\Users\Administrateur\Documents\Images\"+ l.title + ".png", l.picture);
 
             } catch (Exception) {
                 throw;

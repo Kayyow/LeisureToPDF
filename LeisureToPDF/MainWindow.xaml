@@ -117,7 +117,7 @@
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Path=title}" Foreground="#FF616161" FontSize="16" FontWeight="Normal"/>
                                     <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Path=category.label}" FontSize="12" FontStyle="Italic" />
-                                    <TextBlock Grid.Column="1" Grid.RowSpan="2" Foreground="#FF349DAE" HorizontalAlignment="left" VerticalAlignment="Center" FontSize="14" >10</TextBlock>
+                                    <TextBlock Grid.Column="1" Grid.RowSpan="2" Text="{Binding Path=averageNote}" Foreground="#FF349DAE" HorizontalAlignment="left" VerticalAlignment="Center" FontSize="14"/>  
                                     <TextBlock Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" >/10</TextBlock>
                                 </Grid>
 

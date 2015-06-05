@@ -25,11 +25,10 @@ namespace LeisureToPDF.Services {
 			int idxLTPDF = currentDir.IndexOf(dirLTPDF) + dirLTPDF.Length;
             string dir = currentDir.Substring(0, idxLTPDF);
 			string dirAssets = dir + @"LeisureToPDF\Assets\";
-            string directory = path;
 			//
             
             System.Diagnostics.ProcessStartInfo psi;
-            psi = new System.Diagnostics.ProcessStartInfo(directory, "");
+            psi = new System.Diagnostics.ProcessStartInfo(path, "");
 
             Font labelFont = FontFactory.GetFont("georgia", 10f, new BaseColor(255, 255, 255));
             Font titleFont = FontFactory.GetFont("Open sans", 16, new BaseColor(101, 185, 189));
@@ -38,7 +37,7 @@ namespace LeisureToPDF.Services {
             rec.BackgroundColor = new BaseColor(240, 240, 240);
 
             Document doc = new Document(rec, 25, 25, 25, 25);
-            FileStream fs = new FileStream(directory, FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
 
             PdfWriter writer = PdfWriter.GetInstance(doc, fs);
 
@@ -117,7 +116,7 @@ namespace LeisureToPDF.Services {
                 cellAddressValue.AddElement(new Paragraph(new Phrase(leisure.address.number + " " + leisure.address.street + " " + leisure.address.zip_code + " " + leisure.address.city)));
                 cellDescriptionValue.AddElement(new Paragraph(new Phrase(@leisure.description)));
 
-                Image PictureLeisure = Image.GetInstance("C:\\Users\\Juliien\\Documents\\Visual Studio 2013\\Projects\\Test ItextSharp\\Test ItextSharp\\img\\Capture1.png");
+                Image PictureLeisure = Image.GetInstance("C:\\Users\\Administrateur\\Documents\\Visual Studio 2013\\Projects\\LeisureToPDF\\LeisureToPDF\\Assets\\img\\image_lavalloisir.jpg");
                 cellImage.AddElement(PictureLeisure);
 
 

@@ -36,3 +36,15 @@ C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.exe
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\LeisureToPDF.DAL.exe.config
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\LeisureToPDF.DAL.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\EntityFramework.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\EntityFramework.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.Database.csprojResolveAssemblyReference.cache
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.pdb

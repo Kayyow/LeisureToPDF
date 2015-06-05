@@ -80,6 +80,7 @@
     <Compile Include="leisure.cs">
       <DependentUpon>Lavalloisir.tt</DependentUpon>
     </Compile>
+    <Compile Include="LeisurePartial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

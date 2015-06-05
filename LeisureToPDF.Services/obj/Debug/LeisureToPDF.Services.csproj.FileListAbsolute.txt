@@ -24,3 +24,16 @@ C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\fr\EntityFramework.resources.dll
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.exe
 C:\Users\Juliien\documents\visual studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe.config
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.Services.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\itextsharp.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.DAL.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\EntityFramework.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\itextsharp.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\EntityFramework.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.csprojResolveAssemblyReference.cache
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Debug\LeisureToPDF.Services.pdb
