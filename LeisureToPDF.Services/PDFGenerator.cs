@@ -16,32 +16,20 @@ namespace LeisureToPDF.Services {
         public static BaseColor TURQUOISE = new BaseColor(101, 185, 189);
         public static BaseColor GREY = new BaseColor(221, 221, 221);
 
-        public static void GeneratePDF(leisure leisure) {
+        public static void GeneratePDF(leisure leisure, string path) {
 
+            
 			// Uses to get directory
 			string dirLTPDF = @"LeisureToPDF\";
 			string currentDir = Directory.GetCurrentDirectory();
 			int idxLTPDF = currentDir.IndexOf(dirLTPDF) + dirLTPDF.Length;
-			string dir = currentDir.Substring(0, idxLTPDF);
+            string dir = currentDir.Substring(0, idxLTPDF);
 			string dirAssets = dir + @"LeisureToPDF\Assets\";
+            string directory = path;
 			//
-
             
             System.Diagnostics.ProcessStartInfo psi;
-            psi = new System.Diagnostics.ProcessStartInfo(dirAssets + leisure.title + "PDF.pdf", "");
-
-            // Delete the PDF if it already exist 
-            if (System.IO.File.Exists(dirAssets + leisure.title + "PDF.pdf")) {
-                try {
-                    System.IO.File.Delete(dirAssets + leisure.title + "PDF.pdf");
-
-                } catch (Exception f) {
-
-                    Console.WriteLine(f.Message);
-                    throw;
-                }
-            }
-            //
+            psi = new System.Diagnostics.ProcessStartInfo(directory, "");
 
             Font labelFont = FontFactory.GetFont("georgia", 10f, new BaseColor(255, 255, 255));
             Font titleFont = FontFactory.GetFont("Open sans", 16, new BaseColor(101, 185, 189));
@@ -50,7 +38,7 @@ namespace LeisureToPDF.Services {
             rec.BackgroundColor = new BaseColor(240, 240, 240);
 
             Document doc = new Document(rec, 25, 25, 25, 25);
-            FileStream fs = new FileStream(dirAssets + leisure.title + "PDF.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fs = new FileStream(directory, FileMode.Create, FileAccess.Write, FileShare.None);
 
             PdfWriter writer = PdfWriter.GetInstance(doc, fs);
 

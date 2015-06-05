@@ -100,12 +100,8 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="27"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
 
-                <ListBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="LeisureListBox" Margin="0,0,0,4" ItemsSource="{Binding Leisures}" SelectedItem="{Binding SelectedLeisure}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox Grid.Row="0" x:Name="LeisureListBox" Margin="0,0,0,4" ItemsSource="{Binding Leisures}" SelectedItem="{Binding SelectedLeisure}" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -129,8 +125,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Grid.Row="1" Grid.Column="0" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="GeneratePDFButtonClick"></Button>
-                <Button Grid.Row="1" Grid.Column="1" Margin="1,2,0,0" Content="Consulter le loisir" Background="#FF349DAE" Foreground="#fff"></Button>
+                <Button Grid.Row="1" Margin="0,2,1,0" Content="Générer un PDF" Background="#FF349DAE" Foreground="#fff" Click="GeneratePDFButtonClick"></Button>
 
             </Grid>
         </GroupBox>

@@ -131,7 +131,6 @@ namespace LeisureToPDF
                 leisure.address.city = cityTextBox.Text;
             }
 			
-
 			leisure.category = (category)categoryComboBox.SelectedItem;
 		}
 		#endregion
@@ -219,9 +218,16 @@ namespace LeisureToPDF
         /// <param name="sender"></param>
         /// <param name="e"></param>
 		private void GeneratePDFButtonClick(object sender, RoutedEventArgs e) {
+            string pathDirectory;
 
             try {
-                PDFGenerator.GeneratePDF(this.SelectedLeisure);
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FileName = SelectedLeisure.title + ".pdf";
+                sfd.ShowDialog();
+                
+                pathDirectory = sfd.FileName;
+
+                PDFGenerator.GeneratePDF(this.SelectedLeisure, pathDirectory);
                 Notification = "Génération de la plaquette '" + SelectedLeisure.title + "' effectué avec succès."  ; 
             } catch (Exception ex) {
                 Notification = ex.Message;
