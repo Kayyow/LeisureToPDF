@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lavalloisirModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="street" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="zip_code" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="label" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="evaluation">
+    <Key>
+      <PropertyRef Name="id_leisure" />
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="note" Type="int" Nullable="false" />
+    <Property Name="opinion" Type="text" Nullable="false" />
+    <Property Name="id_leisure" Type="int" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="leisure">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="website" Type="varchar" MaxLength="255" />
+    <Property Name="picture" Type="mediumblob" />
+    <Property Name="id_address" Type="int" Nullable="false" />
+    <Property Name="id_category" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="evaluation_ibfk_1">
+    <End Role="leisure" Type="Self.leisure" Multiplicity="1" />
+    <End Role="evaluation" Type="Self.evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="leisure">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="evaluation">
+        <PropertyRef Name="id_leisure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="leisure_ibfk_1">
+    <End Role="address" Type="Self.address" Multiplicity="1" />
+    <End Role="leisure" Type="Self.leisure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="leisure">
+        <PropertyRef Name="id_address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="leisure_ibfk_2">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="leisure" Type="Self.leisure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="leisure">
+        <PropertyRef Name="id_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="lavalloisirModelStoreContainer">
+    <EntitySet Name="address" EntityType="Self.address" Schema="lavalloisir" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="lavalloisir" store:Type="Tables" />
+    <EntitySet Name="evaluation" EntityType="Self.evaluation" Schema="lavalloisir" store:Type="Tables" />
+    <EntitySet Name="leisure" EntityType="Self.leisure" Schema="lavalloisir" store:Type="Tables" />
+    <AssociationSet Name="evaluation_ibfk_1" Association="Self.evaluation_ibfk_1">
+      <End Role="leisure" EntitySet="leisure" />
+      <End Role="evaluation" EntitySet="evaluation" />
+    </AssociationSet>
+    <AssociationSet Name="leisure_ibfk_1" Association="Self.leisure_ibfk_1">
+      <End Role="address" EntitySet="address" />
+      <End Role="leisure" EntitySet="leisure" />
+    </AssociationSet>
+    <AssociationSet Name="leisure_ibfk_2" Association="Self.leisure_ibfk_2">
+      <End Role="category" EntitySet="category" />
+      <End Role="leisure" EntitySet="leisure" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

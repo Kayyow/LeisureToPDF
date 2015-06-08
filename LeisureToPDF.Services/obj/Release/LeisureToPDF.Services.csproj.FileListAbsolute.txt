@@ -1,0 +1,13 @@
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\LeisureToPDF.Services.exe.config
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\LeisureToPDF.Services.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\LeisureToPDF.Services.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\itextsharp.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\LeisureToPDF.DAL.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\EntityFramework.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\LeisureToPDF.DAL.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\itextsharp.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\EntityFramework.xml
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\bin\Release\fr\EntityFramework.resources.dll
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Release\LeisureToPDF.Services.csprojResolveAssemblyReference.cache
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Release\LeisureToPDF.Services.exe
+C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Services\obj\Release\LeisureToPDF.Services.pdb
