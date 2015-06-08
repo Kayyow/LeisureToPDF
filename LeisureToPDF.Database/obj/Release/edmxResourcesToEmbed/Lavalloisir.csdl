@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lavalloisirModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="zip_code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="leisure" Relationship="Self.leisure_ibfk_1" FromRole="address" ToRole="leisure" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="label" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="leisure" Relationship="Self.leisure_ibfk_2" FromRole="category" ToRole="leisure" />
+  </EntityType>
+  <EntityType Name="evaluation">
+    <Key>
+      <PropertyRef Name="id_leisure" />
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="note" Type="Int32" Nullable="false" />
+    <Property Name="opinion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_leisure" Type="Int32" Nullable="false" />
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="leisure" Relationship="Self.evaluation_ibfk_1" FromRole="evaluation" ToRole="leisure" />
+  </EntityType>
+  <EntityType Name="leisure">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_address" Type="Int32" Nullable="false" />
+    <Property Name="id_category" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="address" Relationship="Self.leisure_ibfk_1" FromRole="leisure" ToRole="address" />
+    <NavigationProperty Name="category" Relationship="Self.leisure_ibfk_2" FromRole="leisure" ToRole="category" />
+    <NavigationProperty Name="evaluation" Relationship="Self.evaluation_ibfk_1" FromRole="leisure" ToRole="evaluation" />
+    <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="leisure_ibfk_1">
+    <End Role="address" Type="Self.address" Multiplicity="1" />
+    <End Role="leisure" Type="Self.leisure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="leisure">
+        <PropertyRef Name="id_address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="leisure_ibfk_2">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="leisure" Type="Self.leisure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="leisure">
+        <PropertyRef Name="id_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="evaluation_ibfk_1">
+    <End Role="leisure" Type="Self.leisure" Multiplicity="1" />
+    <End Role="evaluation" Type="Self.evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="leisure">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="evaluation">
+        <PropertyRef Name="id_leisure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="lavalloisirEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="address" EntityType="Self.address" />
+    <EntitySet Name="category" EntityType="Self.category" />
+    <EntitySet Name="evaluation" EntityType="Self.evaluation" />
+    <EntitySet Name="leisure" EntityType="Self.leisure" />
+    <AssociationSet Name="leisure_ibfk_1" Association="Self.leisure_ibfk_1">
+      <End Role="address" EntitySet="address" />
+      <End Role="leisure" EntitySet="leisure" />
+    </AssociationSet>
+    <AssociationSet Name="leisure_ibfk_2" Association="Self.leisure_ibfk_2">
+      <End Role="category" EntitySet="category" />
+      <End Role="leisure" EntitySet="leisure" />
+    </AssociationSet>
+    <AssociationSet Name="evaluation_ibfk_1" Association="Self.evaluation_ibfk_1">
+      <End Role="leisure" EntitySet="leisure" />
+      <End Role="evaluation" EntitySet="evaluation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
