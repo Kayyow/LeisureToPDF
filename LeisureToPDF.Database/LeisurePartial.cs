@@ -8,7 +8,7 @@ namespace LeisureToPDF.Database
 {
     public partial class leisure
     {
-        public float averageNote
+        public string averageNote
         {
             get
             {
@@ -18,7 +18,13 @@ namespace LeisureToPDF.Database
                 {
                     averageNote += eval.note;
                 }
-                return averageNote / evaluations.Count;
+
+                if (averageNote != 0) {
+                    return (averageNote / evaluations.Count).ToString("0.#");
+                } else {
+                    return "0";
+                }
+                
             }
         }
     }

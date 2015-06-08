@@ -48,3 +48,4 @@ C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\Leisu
 C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.Database.csprojResolveAssemblyReference.cache
 C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.exe
 C:\Users\Administrateur\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.DAL.pdb
+C:\Users\Juliien\Documents\Visual Studio 2013\Projects\LeisureToPDF\LeisureToPDF.Database\obj\Debug\LeisureToPDF.Database.csprojResolveAssemblyReference.cache

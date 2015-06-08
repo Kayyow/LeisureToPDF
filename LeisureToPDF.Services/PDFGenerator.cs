@@ -15,10 +15,14 @@ namespace LeisureToPDF.Services {
         public static BaseColor BLUE = new BaseColor(95, 154, 181);
         public static BaseColor TURQUOISE = new BaseColor(101, 185, 189);
         public static BaseColor GREY = new BaseColor(221, 221, 221);
+        public static BaseColor WHITE_GREY = new BaseColor(240, 240, 240);
+
+        public static int NB_COLS;
 
         public static void GeneratePDF(leisure leisure, string path) {
 
-            
+            string tempPath = @"C:\leisureToPDF_temp\";
+
 			// Uses to get directory
 			string dirLTPDF = @"LeisureToPDF\";
 			string currentDir = Directory.GetCurrentDirectory();
@@ -26,7 +30,14 @@ namespace LeisureToPDF.Services {
             string dir = currentDir.Substring(0, idxLTPDF);
 			string dirAssets = dir + @"LeisureToPDF\Assets\";
 			//
-            
+
+            if (leisure.picture != null) {
+                 NB_COLS = 2;
+            } else {
+                NB_COLS = 4;
+            }
+
+
             System.Diagnostics.ProcessStartInfo psi;
             psi = new System.Diagnostics.ProcessStartInfo(path, "");
 
@@ -34,7 +45,7 @@ namespace LeisureToPDF.Services {
             Font titleFont = FontFactory.GetFont("Open sans", 16, new BaseColor(101, 185, 189));
 
             Rectangle rec = new Rectangle(PageSize.A4);
-            rec.BackgroundColor = new BaseColor(240, 240, 240);
+            rec.BackgroundColor = WHITE_GREY;
 
             Document doc = new Document(rec, 25, 25, 25, 25);
             FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
@@ -60,13 +71,13 @@ namespace LeisureToPDF.Services {
 
                 /* Création des cellule 'Label' */
                 PdfPCell cellCategoryLabel = new PdfPCell();
-                SetCellLabelStyle(cellCategoryLabel, 2, 1);
+                SetCellLabelStyle(cellCategoryLabel, NB_COLS, 1);
 
                 PdfPCell cellEmailLabel = new PdfPCell();
-                SetCellLabelStyle(cellEmailLabel, 2, 1);
+                SetCellLabelStyle(cellEmailLabel, NB_COLS, 1);
 
                 PdfPCell cellPhoneLabel = new PdfPCell();
-                SetCellLabelStyle(cellPhoneLabel, 2, 1);
+                SetCellLabelStyle(cellPhoneLabel, NB_COLS, 1);
 
                 PdfPCell cellWebsiteLabel = new PdfPCell();
                 SetCellLabelStyle(cellWebsiteLabel, 4, 1);
@@ -79,13 +90,13 @@ namespace LeisureToPDF.Services {
 
                 /* Création des cellule 'Value' */
                 PdfPCell cellCategoryValue = new PdfPCell();
-                SetCellValueStyle(cellCategoryValue, 2, 1);
+                SetCellValueStyle(cellCategoryValue, NB_COLS, 1);
 
                 PdfPCell cellEmailValue = new PdfPCell();
-                SetCellValueStyle(cellEmailValue, 2, 1);
+                SetCellValueStyle(cellEmailValue, NB_COLS, 1);
 
                 PdfPCell cellPhoneValue = new PdfPCell();
-                SetCellValueStyle(cellPhoneValue, 2, 1);
+                SetCellValueStyle(cellPhoneValue, NB_COLS, 1);
 
                 PdfPCell cellWebsiteValue = new PdfPCell();
                 SetCellValueStyle(cellWebsiteValue, 4, 1);
@@ -97,10 +108,11 @@ namespace LeisureToPDF.Services {
                 SetCellValueStyle(cellDescriptionValue, 4, 1);
 
                 PdfPCell cellImage = new PdfPCell();
-                cellImage.FixedHeight = 80;
-                cellImage.Padding = 0;
+                cellImage.Border = 0;
+                cellImage.Padding = 5;
                 cellImage.Rowspan = 6;
                 cellImage.Colspan = 2;
+                cellImage.VerticalAlignment = Element.ALIGN_CENTER;
 
                 cellCategoryLabel.AddElement(new Paragraph(new Phrase("Categorie :", labelFont)));
                 cellEmailLabel.AddElement(new Paragraph(new Phrase("Email :  ", labelFont)));
@@ -116,15 +128,32 @@ namespace LeisureToPDF.Services {
                 cellAddressValue.AddElement(new Paragraph(new Phrase(leisure.address.number + " " + leisure.address.street + " " + leisure.address.zip_code + " " + leisure.address.city)));
                 cellDescriptionValue.AddElement(new Paragraph(new Phrase(@leisure.description)));
 
-                Image PictureLeisure = Image.GetInstance("C:\\Users\\Administrateur\\Documents\\Visual Studio 2013\\Projects\\LeisureToPDF\\LeisureToPDF\\Assets\\img\\image_lavalloisir.jpg");
-                cellImage.AddElement(PictureLeisure);
+                if(leisure.picture != null) {
 
+                    if (!Directory.Exists(tempPath)) {
+
+                        Directory.CreateDirectory(tempPath);
+
+                    } else {
+                        DirectoryInfo directory = new DirectoryInfo(tempPath);
+
+                        foreach (FileInfo file in directory.GetFiles()) {
+                            file.Delete();
+                        }
+                    }
+
+                    File.WriteAllBytes(tempPath + leisure.title + ".png", leisure.picture);
+                    Image PictureLeisure = Image.GetInstance(tempPath + leisure.title + ".png");
+                    cellImage.AddElement(PictureLeisure);
+                }
 
                 tab.AddCell(cellHeader);
                 tab.AddCell(cellSeparator);
 
                 tab.AddCell(cellCategoryLabel);
-                tab.AddCell(cellImage);
+                if (leisure.picture != null) {
+                    tab.AddCell(cellImage);
+                }
                 tab.AddCell(cellCategoryValue);
                 tab.AddCell(cellEmailLabel);
                 tab.AddCell(cellEmailValue);
@@ -154,9 +183,7 @@ namespace LeisureToPDF.Services {
                 footerTbl.WriteSelectedRows(0, -1, 240, 30, writer.DirectContent);
 
                 doc.Add(tab);
-
                 doc.Close();
-
 
                 System.Diagnostics.Process.Start(psi);
 
@@ -168,12 +195,11 @@ namespace LeisureToPDF.Services {
                 writer.Close();
                 fs.Close();
                 doc.Close();
+                Directory.Delete(tempPath, true);
             }
-            
         }
         
         private static void SetCellLabelStyle(PdfPCell cell, int nbColumn, int nbRows) {
-
 
             cell.Colspan = nbColumn;
             cell.Rowspan = nbRows;
@@ -182,6 +208,7 @@ namespace LeisureToPDF.Services {
             cell.BorderWidthLeft = 4;
             cell.BorderColorLeft = BLUE;
             cell.BackgroundColor = TURQUOISE;
+            cell.BorderColor = BLUE;
             cell.PaddingLeft = 10;
             cell.PaddingBottom = 10;
         }
@@ -196,8 +223,6 @@ namespace LeisureToPDF.Services {
             cell.PaddingLeft = 10;
             cell.PaddingBottom = 10;
         }
-
-
 
     }
 }

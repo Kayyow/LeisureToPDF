@@ -17,6 +17,7 @@ using LeisureToPDF.Database;
 using LeisureToPDF.Services;
 using Microsoft.Win32;
 using System.IO;
+using System.Drawing;
 
 namespace LeisureToPDF
 {
@@ -63,6 +64,8 @@ namespace LeisureToPDF
 		public static readonly DependencyProperty NotificationProperty =
 			DependencyProperty.Register("Notification", typeof(string), typeof(Window), new PropertyMetadata(null));
 
+        public string pathLeisure;
+
 		#region Constructor
 		public MainWindow() {
 			this._Db = new lavalloisirEntities();
@@ -84,6 +87,7 @@ namespace LeisureToPDF
 
 		#region Private Methods Utils
 		private void ResetTextBoxes() {
+            idTextBox.Text = null;
 			titleTextBox.Text = null;
 			emailTextBox.Text = null;
 			phoneTextBox.Text = null;
@@ -93,7 +97,8 @@ namespace LeisureToPDF
 			zipCodeTextBox.Text = null;
 			cityTextBox.Text = null;
 			descriptionRicheTextBox.Text = null;
-            Notification = "";  
+            Notification = "";
+            pathLeisure = null;
 		}
 
 		private void UpdateSources() {
@@ -115,6 +120,18 @@ namespace LeisureToPDF
 			leisure.phone = phoneTextBox.Text;
 			leisure.website = websiteTextBox.Text;
 			leisure.description = descriptionRicheTextBox.Text;
+
+            if (pathLeisure != null) {
+
+                FileInfo fileInfo = new FileInfo(pathLeisure);
+                byte[] imageConverted = new byte[fileInfo.Length];
+
+                FileStream fs = fileInfo.OpenRead();
+                fs.Read(imageConverted, 0, imageConverted.Length);
+
+                //fileInfo.Delete();
+                leisure.picture = imageConverted;
+            }
 
             if (SelectedLeisure == null) {
                 address address = new address();
@@ -171,6 +188,7 @@ namespace LeisureToPDF
 			this.UpdateSources();
             Notification = "L'enregistrement a été effectué avec succès.";
             notificationTextBlock.Foreground = Brushes.Green;
+            pathLeisure = null;
         }
 
 		/// <summary>
@@ -238,7 +256,6 @@ namespace LeisureToPDF
                 notificationTextBlock.Foreground = Brushes.Red;
                 return;
             }
-            
         }
 
         /// <summary>
@@ -251,17 +268,12 @@ namespace LeisureToPDF
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.ShowDialog();
 
-                leisure l = (leisure)(from lsr in this._Db.leisure
-                             where lsr.id == 1
-                             select lsr).FirstOrDefault();
-                
-                File.WriteAllBytes(@"C:\Users\Administrateur\Documents\Images\"+ l.title + ".png", l.picture);
+                pathLeisure = ofd.FileName;
 
             } catch (Exception) {
+                Notification = "Une erreur est survenue lors du chargement de l'image."; 
                 throw;
             }
-
         }
-
 	}
 }
